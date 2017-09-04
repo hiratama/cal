@@ -2,4 +2,5 @@
 <resources>
     <dimen name="btn_size">42sp</dimen>
     <dimen name="text_size">64sp</dimen>
+    <dimen name="margin_size_m">24</dimen>
 </resources>

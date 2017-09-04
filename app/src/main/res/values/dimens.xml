@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="btn_size">20sp</dimen>
-    <dimen name="tesst_size">32sp</dimen>
+    <dimen name="text_size">32sp</dimen>
+    <dimen name="margin_size_m">24</dimen>
 </resources>
