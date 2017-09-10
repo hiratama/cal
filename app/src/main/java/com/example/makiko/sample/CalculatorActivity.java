@@ -9,6 +9,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+import java.math.BigDecimal;
+
 public class CalculatorActivity extends BaseActivity {
 
     @InjectView(R.id.btn_1)
@@ -73,7 +75,7 @@ public class CalculatorActivity extends BaseActivity {
         double value = Double.parseDouble(text.getText().toString());
         if (operatorBtn.getId() == R.id.btn_eq) {
             result = cal(recentOperator, result, value);
-            text.setText(String.valueOf(result));
+            text.setText(format(result));
             clear();
         }else{
             result = cal(recentOperator, value, result);
@@ -91,17 +93,18 @@ public class CalculatorActivity extends BaseActivity {
     private double cal(int operator, double value1, double value2) {
         switch (operator) {
             case R.id.btn_add:
-                return value1 + value2;
+                 return add(value1, value2);
             case R.id.btn_sub:
-                return value1 - value2;
+                return subtraction(value1, value2);
             case R.id.btn_mul:
-                return value1 * value2;
+                return multiplication(value1, value2);
             case R.id.btn_div:
-                return value1 / value2;
+                return division(value1, value2);
             default:
                 return value1;
         }
     }
+
 
     @OnClick({
             R.id.btn_0, R.id.btn_dot,
@@ -116,5 +119,35 @@ public class CalculatorActivity extends BaseActivity {
     @OnClick({R.id.btn_eq, R.id.btn_add, R.id.btn_sub, R.id.btn_mul, R.id.btn_div})
     public void onBtnAddClicked(View view) {
         operation(view);
+    }
+
+
+    public double add(double value1, double value2) {
+        return value1 + value2;
+    }
+
+    public double subtraction(double value1, double value2){
+        return value1 - value2;
+    }
+
+    public double multiplication(double value1, double value2){
+        return value1 * value2;
+    }
+
+    public double division(double value1, double value2){
+        if (String.valueOf(value2).equals(0)){
+            return 0;
+        }
+        BigDecimal val1 = BigDecimal.valueOf(value1);
+        BigDecimal val2 = BigDecimal.valueOf(value2);
+        BigDecimal resulet = val2.divide(val1);
+        return resulet.doubleValue();
+    }
+
+    public static String format(double d){
+        if(d == (long)d){
+            return String.format("%d", (int)d);
+        }
+        return String.format("%s", d);
     }
 }
