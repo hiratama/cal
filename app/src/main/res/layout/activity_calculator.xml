@@ -33,6 +33,39 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="CR"/>
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btn_ms_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="MSCR"/>
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btn_ms_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="MS+"/>
+                <Button
+                    android:visibility="invisible"
+                    android:id="@+id/btn_ms_minus"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="MS-"/>
+
+            </LinearLayout>
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

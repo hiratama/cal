@@ -45,8 +45,11 @@ public class CalculatorActivity extends BaseActivity {
     Button btnDiv;
     @InjectView(R.id.btn_dot)
     Button btnDot;
+    @InjectView(R.id.btn_clear)
+    Button btnClear;
     @InjectView(R.id.text)
     TextView text;
+
 
     private double result = 0;
     int recentOperator;
@@ -90,6 +93,11 @@ public class CalculatorActivity extends BaseActivity {
         result = 0;
         isOperatorKeyPushed = false;
     }
+
+    private void reset(){
+        clear();
+        text.setText("");
+    }
     private double cal(int operator, double value1, double value2) {
         switch (operator) {
             case R.id.btn_add:
@@ -121,6 +129,11 @@ public class CalculatorActivity extends BaseActivity {
         operation(view);
     }
 
+    @OnClick(R.id.btn_clear)
+    public void onBtnClear(){
+        reset();
+    }
+
 
     public double add(double value1, double value2) {
         return value1 + value2;
@@ -140,8 +153,8 @@ public class CalculatorActivity extends BaseActivity {
         }
         BigDecimal val1 = BigDecimal.valueOf(value1);
         BigDecimal val2 = BigDecimal.valueOf(value2);
-        BigDecimal resulet = val2.divide(val1);
-        return resulet.doubleValue();
+        BigDecimal result = val2.divide(val1);
+        return result.doubleValue();
     }
 
     public static String format(double d){
