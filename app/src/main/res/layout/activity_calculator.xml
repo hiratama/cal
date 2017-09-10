@@ -43,21 +43,18 @@
                     android:layout_height="wrap_content"
                     android:text="CR"/>
                 <Button
-                    android:visibility="invisible"
-                    android:id="@+id/btn_mrc_clear"
+                    android:id="@+id/btn_mrc"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="MSCR"/>
                 <Button
-                    android:visibility="invisible"
                     android:id="@+id/btn_m_plus"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="MS+"/>
                 <Button
-                    android:visibility="invisible"
                     android:id="@+id/btn_m_minus"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"

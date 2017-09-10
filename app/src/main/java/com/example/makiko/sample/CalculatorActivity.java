@@ -47,11 +47,19 @@ public class CalculatorActivity extends BaseActivity {
     Button btnDot;
     @InjectView(R.id.btn_clear)
     Button btnClear;
+    @InjectView(R.id.btn_m_plus)
+    Button btnMPlus;
+    @InjectView(R.id.btn_m_minus)
+    Button btnMMinus;
     @InjectView(R.id.text)
     TextView text;
-
+    @InjectView(R.id.btn_mrc)
+    Button btnMrc;
 
     private double result = 0;
+    private double memory = 0;
+    private double resultMemory = 0;
+
     int recentOperator;
     boolean isOperatorKeyPushed;
 
@@ -75,7 +83,7 @@ public class CalculatorActivity extends BaseActivity {
 
     private void operation(View view) {
         Button operatorBtn = setButtonView(view);
-        double value = Double.parseDouble(text.getText().toString());
+        double value = setValue(text);
         if (operatorBtn.getId() == R.id.btn_eq) {
             result = cal(recentOperator, result, value);
             text.setText(format(result));
@@ -90,13 +98,18 @@ public class CalculatorActivity extends BaseActivity {
 
     private void clear(){
         recentOperator = 0;
-        result = 0;
         isOperatorKeyPushed = false;
+        result = 0;
+        resultMemory = 0;
+    }
+
+    private void clear_text(){
+        text.setText("");
     }
 
     private void reset(){
         clear();
-        text.setText("");
+        clear_text();
     }
     private double cal(int operator, double value1, double value2) {
         switch (operator) {
@@ -132,6 +145,27 @@ public class CalculatorActivity extends BaseActivity {
     @OnClick(R.id.btn_clear)
     public void onBtnClear(){
         reset();
+    }
+
+    @OnClick({R.id.btn_m_plus, R.id.btn_m_minus})
+    public void onBtnMemoryCal(View view){
+        double value = setValue(text);
+        switch (view.getId()) {
+            case R.id.btn_m_plus:
+                resultMemory = add(resultMemory, value);
+                break;
+            case R.id.btn_m_minus:
+                resultMemory = subtraction(resultMemory, value);
+                break;
+
+        }
+        isOperatorKeyPushed = true;
+    }
+
+    @OnClick({R.id.btn_mrc})
+    public void onBtMrc(){
+        text.setText(format(resultMemory));
+        isOperatorKeyPushed = true;
     }
 
 }

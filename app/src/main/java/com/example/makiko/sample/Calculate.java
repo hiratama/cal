@@ -1,9 +1,16 @@
 package com.example.makiko.sample;
 
+import android.view.View;
+import android.widget.TextView;
+
 import java.math.BigDecimal;
 
 public class Calculate {
-    
+
+
+    public static double setValue(TextView view){
+       return Double.parseDouble(view.getText().toString());
+    }
 
     public static double add(double value1, double value2) {
         return value1 + value2;
